@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real - Time App with Django Channels</title>
+</head>
+<body>
+    <h1 id="app">{{ text }}</h1>
+
+    <script>
+        var socket = new WebSocket("ws://127.0.0.1:8000/ws/some_url/");
+        socket.onmessage = function(event){
+            var data = JSON.parse(event.data)
+            console.log(data);
+            document.querySelector("#app").innerText = data.message;
+        }
+
+    </script>
+    
+
+</body>
+</html>
